@@ -1,16 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
+﻿using Microsoft.AspNet.Mvc;
+using OdeToFood.Models;
+using OdeToFood.Services;
 
 namespace OdeToFood.Controllers
 {
-    public class HomeController
+    public class HomeController : Controller
     {
-        public string Index()
+        private readonly IRestaurantData restaurantData;
+
+        public HomeController(IRestaurantData restaurantData)
         {
-            return "Hello from Controller";
+            this.restaurantData = restaurantData;
+        }
+
+        public IActionResult Index()
+        {
+            var model = restaurantData.GetAll();
+            return View(model);
         }
     }
 }

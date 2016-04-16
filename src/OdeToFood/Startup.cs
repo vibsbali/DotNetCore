@@ -26,6 +26,7 @@ namespace OdeToFood
         {
             services.AddSingleton(provider => Configuration);
             services.AddSingleton<IGreeter, Greeter>();
+            services.AddScoped<IRestaurantData, InMemoryRestaurantData>();
             services.AddMvc();
         }
 
@@ -51,7 +52,13 @@ namespace OdeToFood
 
             app.UseFileServer();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(configureRoutes =>
+            {
+                // /Home/Index
+
+                configureRoutes.MapRoute("Default", 
+                    "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.Run(async (context) =>
             {
