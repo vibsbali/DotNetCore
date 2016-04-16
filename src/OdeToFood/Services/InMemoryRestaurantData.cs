@@ -6,11 +6,12 @@ namespace OdeToFood.Services
 {
     public class InMemoryRestaurantData : IRestaurantData
     {
-        private readonly IEnumerable<Restaurant> restaurants;
+        //created static List so it doesn't get instantiated over and over again
+        private static readonly List<Restaurant> Restaurants;
 
-        public InMemoryRestaurantData()
+        static InMemoryRestaurantData()
         {
-            restaurants = new List<Restaurant>
+            Restaurants = new List<Restaurant>
             {
                 new Restaurant { Id = 1, Name = "Tersiguel's"},
                 new Restaurant {Id = 2, Name = "LJ's and the Kat"},
@@ -19,12 +20,18 @@ namespace OdeToFood.Services
         }
         public IEnumerable<Restaurant> GetAll()
         {
-            return restaurants;
+            return Restaurants;
         }
 
         public Restaurant Get(int id)
         {
-            return restaurants.FirstOrDefault(r => r.Id == id);
+            return Restaurants.FirstOrDefault(r => r.Id == id);
+        }
+
+        public void Add(Restaurant restaurant)
+        {
+            restaurant.Id = Restaurants.Max(r => r.Id) + 1;
+            Restaurants.Add(restaurant);
         }
     }
 }
