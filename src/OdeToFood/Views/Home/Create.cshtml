@@ -8,25 +8,27 @@
     <title>Create</title>
 </head>
 <body>
-<div>
-    <h1>Create</h1>
+    <div>
+        <h1>Create</h1>
 
-    @using (Html.BeginForm())
-    {
-        <div>
-            @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name)
-        </div>
+        @using (Html.BeginForm())
+        {
+            <div>
+                @Html.LabelFor(m => m.Name)
+                @Html.EditorFor(m => m.Name)
+                @Html.ValidationMessageFor(m => m.Name)
+            </div>
 
-        <div>
-            @Html.LabelFor(m => m.Cuisine)
-            @Html.DropDownListFor(m => m.Cuisine, Html.GetEnumSelectList(typeof (CuisineType)))
-        </div>
+            <div>
+                @Html.LabelFor(m => m.Cuisine)
+                @Html.DropDownListFor(m => m.Cuisine, Html.GetEnumSelectList(typeof(CuisineType)))
+                @Html.ValidationMessageFor(m => m.Cuisine)
+            </div>
 
-        <div>
-            <input type="submit" value="Save" />
-        </div>
-    }
-</div>
+            <div>
+                <input type="submit" value="Save" />
+            </div>
+        }
+    </div>
 </body>
 </html>

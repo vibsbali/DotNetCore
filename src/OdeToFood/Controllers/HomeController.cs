@@ -47,15 +47,20 @@ namespace OdeToFood.Controllers
         [HttpPost]
         public IActionResult Create(RestaurantEditViewModel newRestaurant)
         {
-            var restaurant = new Restaurant
+            if (ModelState.IsValid)
             {
-                Cuisine = newRestaurant.Cuisine,
-                Name = newRestaurant.Name
-            };
+                var restaurant = new Restaurant
+                {
+                    Cuisine = newRestaurant.Cuisine,
+                    Name = newRestaurant.Name
+                };
 
-            restaurantData.Add(restaurant);
+                restaurantData.Add(restaurant);
 
-            return RedirectToAction("Index");
+                return RedirectToAction("Index");
+            }
+
+            return View();
         }
     }
 }

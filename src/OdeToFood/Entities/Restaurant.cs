@@ -1,4 +1,6 @@
-﻿namespace OdeToFood.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace OdeToFood.Entities
 {
     public enum CuisineType
     {
@@ -11,6 +13,7 @@
     public class Restaurant
     {
         public int Id { get; set; }
+        [Required, MinLength(10)]
         public string Name { get; set; }
         public CuisineType Cuisine { get; set; }
 
