@@ -51,7 +51,13 @@ namespace OdeToFood
 
             app.UseFileServer();
 
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(configureRoutes =>
+            {
+                // /Home/Index
+
+                configureRoutes.MapRoute("Default", 
+                    "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.Run(async (context) =>
             {
