@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Mvc;
+﻿using System.Linq;
+using Microsoft.AspNet.Mvc;
 using OdeToFood.Services;
 using OdeToFood.ViewModels;
 
@@ -24,6 +25,17 @@ namespace OdeToFood.Controllers
             };
 
             return View(model);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var restaurant = restaurantData.Get(id);
+            if (restaurant == null)
+            {
+                //return HttpNotFound();
+                return RedirectToAction("Index");
+            }
+            return View(restaurant);
         }
     }
 }

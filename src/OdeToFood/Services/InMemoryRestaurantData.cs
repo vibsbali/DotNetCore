@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using OdeToFood.Entities;
 
 namespace OdeToFood.Services
@@ -19,6 +20,11 @@ namespace OdeToFood.Services
         public IEnumerable<Restaurant> GetAll()
         {
             return restaurants;
+        }
+
+        public Restaurant Get(int id)
+        {
+            return restaurants.FirstOrDefault(r => r.Id == id);
         }
     }
 }
