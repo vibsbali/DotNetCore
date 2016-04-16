@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Microsoft.AspNet.Mvc;
+using OdeToFood.Entities;
 using OdeToFood.Services;
 using OdeToFood.ViewModels;
 
@@ -36,6 +37,11 @@ namespace OdeToFood.Controllers
                 return RedirectToAction("Index");
             }
             return View(restaurant);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
         }
     }
 }
