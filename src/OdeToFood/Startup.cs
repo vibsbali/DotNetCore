@@ -44,6 +44,10 @@ namespace OdeToFood
             }
 
             app.UseRuntimeInfoPage("/info");
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.Run(async (context) =>
             {
                 //throw new System.Exception("Error");
