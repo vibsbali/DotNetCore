@@ -30,6 +30,11 @@ namespace OdeToFood.Services
             odeToFoodDbContext.Add(restaurant);
             odeToFoodDbContext.SaveChanges();
         }
+
+        public int Commit()
+        {
+            return odeToFoodDbContext.SaveChanges();
+        }
     }
 }
 

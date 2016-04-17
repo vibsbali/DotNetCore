@@ -39,6 +39,35 @@ namespace OdeToFood.Controllers
             return View(restaurant);
         }
 
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var model = restaurantData.Get(id);
+            if (model == null)
+            {
+                return RedirectToAction("Index");
+            }
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, RestaurantEditViewModel input)
+        {
+            var restaurant = restaurantData.Get(id);
+            if (restaurant != null && ModelState.IsValid)
+            {
+                restaurant.Name = input.Name;
+                restaurant.Cuisine = input.Cuisine;
+                restaurantData.Commit();
+
+                return RedirectToAction("Details", new {id = restaurant.Id});
+            }
+
+            return View(restaurant);
+        }
+
+
+
         public IActionResult Create()
         {
             return View();

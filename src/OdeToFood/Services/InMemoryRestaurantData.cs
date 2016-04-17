@@ -33,5 +33,10 @@ namespace OdeToFood.Services
             restaurant.Id = Restaurants.Max(r => r.Id) + 1;
             Restaurants.Add(restaurant);
         }
+
+        public int Commit()
+        {
+            return 0;
+        }
     }
 }
