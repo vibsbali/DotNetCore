@@ -10,7 +10,8 @@
     @RenderBody()
 </div>
 <footer>
-    @RenderSection("Footer", false)
+    @*@RenderSection("Footer", false)*@
+    @Component.Invoke("Greeting")
 </footer>
 </body>
 </html>
