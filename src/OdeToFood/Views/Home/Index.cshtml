@@ -1,11 +1,10 @@
 ﻿@model OdeToFood.ViewModels.HomePageViewModel
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Home</title>
-</head>
-<body>
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
 <h1>Welcome!</h1>
     <h3>@Model.CurrentGreeting</h3>
 <div>
@@ -20,5 +19,3 @@
         }
     </table>
 </div>
-</body>
-</html>
