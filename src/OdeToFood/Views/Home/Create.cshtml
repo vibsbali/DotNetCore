@@ -1,23 +1,18 @@
 ﻿@using OdeToFood.Entities
 @model Restaurant
+@{
+    ViewBag.Title = "Create a new restaurant";
+}
 
-<!DOCTYPE html>
+<h1>Create</h1>
 
-<html>
-<head>
-    <title>Create</title>
-</head>
-<body>
+@using (Html.BeginForm())
+{
     <div>
-        <h1>Create</h1>
-
-        @using (Html.BeginForm())
-        {
-            <div>
-                @Html.LabelFor(m => m.Name)
-                @Html.EditorFor(m => m.Name)
-                @Html.ValidationMessageFor(m => m.Name)
-            </div>
+        @Html.LabelFor(m => m.Name)
+        @Html.EditorFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
 
             <div>
                 @Html.LabelFor(m => m.Cuisine)
@@ -28,7 +23,4 @@
             <div>
                 <input type="submit" value="Save" />
             </div>
-        }
-    </div>
-</body>
-</html>
+}

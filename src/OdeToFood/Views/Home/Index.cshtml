@@ -2,11 +2,9 @@
 
 @{
     ViewBag.Title = "Home";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h1>Welcome!</h1>
-    <h3>@Model.CurrentGreeting</h3>
 <div>
     <table>
         @foreach (var restaurant in Model.Restaurants)
@@ -14,8 +12,12 @@
             <tr>
                 <td>@restaurant.Id</td>
                 <td>@restaurant.Name</td>
-                <td>@Html.ActionLink("View Details","Details", new { id = restaurant.Id})</td>
+                <td>@Html.ActionLink("View Details", "Details", new {id = restaurant.Id})</td>
             </tr>
         }
     </table>
 </div>
+
+@section footer{
+    <h3>@Model.CurrentGreeting</h3>
+}
